@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MIDIBOY GAMES｜雑魚になろう。事業計画</title>
+<style>
+:root{
+  --bg:#070707;
+  --bg2:#10100f;
+  --fg:#f4efe6;
+  --muted:#9d9488;
+  --line:#2b2823;
+  --accent:#ff6a00;
+  --accent2:#ffb75d;
+  --paper:#f3eee5;
+  --ink:#11100d;
+  --max:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+  letter-spacing:.015em;
+  overflow-x:hidden;
+}
+.site{width:100%;overflow:hidden}
+section{
+  position:relative;
+  width:100%;
+  padding:clamp(78px,12vw,150px) clamp(22px,6vw,72px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.inner{width:min(100%,var(--max));margin:0 auto;position:relative;z-index:2}
+.kicker{
+  color:var(--accent);
+  font-size:12px;
+  line-height:1;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:800;
+  margin-bottom:22px;
+}
+h1,h2,h3,p{margin:0}
+h1{
+  font-size:clamp(52px,12vw,132px);
+  line-height:.9;
+  letter-spacing:-.075em;
+  font-weight:900;
+}
+h2{
+  font-size:clamp(34px,7vw,84px);
+  line-height:1.02;
+  letter-spacing:-.065em;
+  font-weight:880;
+}
+h3{
+  font-size:clamp(20px,3vw,30px);
+  line-height:1.2;
+  letter-spacing:-.035em;
+}
+.lead{
+  font-size:clamp(19px,3.2vw,30px);
+  line-height:1.7;
+  color:#d9d1c6;
+  max-width:820px;
+}
+.text{
+  font-size:clamp(16px,2.1vw,21px);
+  line-height:1.85;
+  color:#c8c0b4;
+  max-width:800px;
+}
+.small{
+  font-size:clamp(13px,1.8vw,16px);
+  line-height:1.7;
+  color:#a69d91;
+}
+.orange{color:var(--accent)}
+.light{
+  background:var(--paper);
+  color:var(--ink);
+}
+.light .lead,.light .text{color:#453e36}
+.light .small{color:#756b60}
+.center{text-align:center}
+.center .lead,.center .text{margin-left:auto;margin-right:auto}
+.hero{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  isolation:isolate;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(255,106,0,.28),transparent 18%),
+    radial-gradient(circle at 50% 50%,rgba(255,183,93,.12),transparent 38%),
+    linear-gradient(180deg,#0b0907,#000);
+  z-index:0;
+}
+.swarm-dot{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(255,106,0,.85);
+  opacity:.78;
+  z-index:1;
+}
+.core{
+  position:absolute;
+  left:50%;
+  top:49%;
+  transform:translate(-50%,-50%);
+  width:clamp(62px,9vw,94px);
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.36);
+  box-shadow:0 0 78px rgba(255,255,255,.34), inset 0 0 22px rgba(255,255,255,.28);
+  z-index:1;
+}
+.hero .sub{
+  margin-top:26px;
+  font-size:clamp(19px,4vw,36px);
+  color:#eee4d7;
+  font-weight:700;
+  letter-spacing:-.04em;
+}
+.hero .meta{
+  margin-top:56px;
+  color:#81786d;
+  font-size:13px;
+  letter-spacing:.1em;
+}
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px,7vw,88px);
+  align-items:center;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:42px;
+}
+.card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.014));
+  min-height:190px;
+}
+.light .card{
+  border-color:#ded5c9;
+  background:rgba(255,255,255,.5);
+}
+.card p{
+  margin-top:14px;
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.65;
+  color:#bfb6aa;
+}
+.light .card p{color:#5c5349}
+.scenario{
+  border-left:3px solid var(--accent);
+  padding-left:clamp(20px,4vw,36px);
+  display:grid;
+  gap:18px;
+  max-width:850px;
+}
+.log{
+  margin-top:28px;
+  background:#111;
+  border:1px solid #2c2924;
+  border-radius:22px;
+  padding:24px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color:#ffcf9b;
+  font-size:clamp(14px,2vw,19px);
+  line-height:1.75;
+  box-shadow:inset 0 0 40px rgba(255,106,0,.06);
+}
+.light .log{background:#15110e;color:#ffd7ad}
+.problem-words{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+  margin-top:52px;
+}
+.word{
+  min-height:92px;
+  border-top:1px solid rgba(255,255,255,.16);
+  padding-top:16px;
+  font-size:clamp(20px,3.4vw,34px);
+  font-weight:850;
+  letter-spacing:-.05em;
+}
+.flow{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:18px;
+  margin-top:46px;
+}
+.node{
+  border:1px solid #544b41;
+  border-radius:999px;
+  min-height:86px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:18px 14px;
+  font-weight:850;
+  font-size:clamp(16px,2.2vw,22px);
+  background:radial-gradient(circle at 50% 35%,rgba(255,106,0,.22),rgba(255,255,255,.02));
+}
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+  margin-top:44px;
+}
+.step{
+  border-top:2px solid var(--accent);
+  padding-top:20px;
+}
+.step h3{font-size:clamp(19px,2.6vw,28px)}
+.step p{
+  margin-top:12px;
+  color:#bfb6aa;
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.6;
+}
+.light .step p{color:#5c5349}
+.finance{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:42px;
+}
+.metric{
+  border-left:3px solid var(--accent);
+  padding:8px 0 8px 22px;
+}
+.metric strong{
+  display:block;
+  font-size:clamp(28px,5vw,52px);
+  line-height:1;
+  letter-spacing:-.06em;
+}
+.metric span{
+  display:block;
+  margin-top:12px;
+  color:#bfb6aa;
+  font-size:clamp(13px,1.9vw,17px);
+  line-height:1.55;
+}
+.light .metric span{color:#5c5349}
+.table{
+  margin-top:38px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+}
+.light .table{border-color:#d8cfc4}
+.row{
+  display:grid;
+  grid-template-columns:1.1fr 1.3fr 1.2fr;
+  gap:0;
+}
+.row>div{
+  padding:18px 20px;
+  border-bottom:1px solid var(--line);
+  color:#d2c9be;
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.55;
+}
+.light .row>div{border-color:#d8cfc4;color:#403930}
+.row:last-child>div{border-bottom:0}
+.row.head>div{
+  color:#fff;
+  background:rgba(255,106,0,.18);
+  font-weight:800;
+}
+.light .row.head>div{color:#1b1713;background:#ffe1c7}
+.partner-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:38px;
+}
+.partner{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:clamp(17px,2.4vw,24px);
+  font-weight:750;
+}
+.dot{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 18px rgba(255,106,0,.75);
+  flex:0 0 auto;
+}
+.cta{
+  min-height:80svh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+.footer{
+  padding:42px 24px;
+  text-align:center;
+  color:#655d53;
+  font-size:12px;
+  letter-spacing:.12em;
+}
+@media(max-width:780px){
+  section{padding:76px 22px}
+  .hero{min-height:96svh}
+  .two,.cards,.finance,.timeline,.partner-list{
+    grid-template-columns:1fr;
+  }
+  .problem-words{
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:36px;
+  }
+  .word{min-height:70px}
+  .flow{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .node{min-height:64px}
+  .card{min-height:unset;padding:24px}
+  .row{grid-template-columns:1fr}
+  .row>div{border-bottom:1px solid var(--line)}
+  .row:last-child>div:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+<main class="site">
+
+<section class="hero">
+  <div class="core"></div>
+  <div class="inner">
+    <div class="kicker">株式会社まちのおと 新規ゲーム事業計画</div>
+    <h1>雑魚になろう。</h1>
+    <p class="sub">主人公は、ほんの一瞬。</p>
+    <p class="meta">MIDIBOY GAMES / Web Pitch v1.0 draft</p>
+  </div>
+</section>
+
+<section class="light center">
+  <div class="inner">
+    <div class="kicker">SECOND FOUNDING</div>
+    <h2>音で心を動かしてきた会社が、<br>次に作るのは、<br>“遊べる体験”です。</h2>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">WHY GAME BUSINESS</div>
+      <h2>ゲームは、<br>音楽・映像・物語を<br>ひとつにできる。</h2>
+    </div>
+    <p class="lead">まちのおとは、CM音楽や映像制作を通して、短い時間で感情を動かす表現を続けてきた。その経験を、プレイヤーが触れ、選び、参加できるインタラクティブな表現へ拡張する。</p>
+  </div>
+</section>
+
+<section class="light center">
+  <div class="inner">
+    <div class="kicker">THE PROBLEM</div>
+    <h2>オンラインゲームは、<br>少し疲れる。</h2>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">ONLINE FATIGUE</div>
+    <h2>上手くなければ、<br>参加しづらい。</h2>
+    <div class="problem-words">
+      <div class="word">ランク</div>
+      <div class="word">VC</div>
+      <div class="word">クラン</div>
+      <div class="word">責任</div>
+      <div class="word">拘束</div>
+    </div>
+  </div>
+</section>
+
+<section class="center">
+  <div class="inner">
+    <div class="kicker">THE ANSWER</div>
+    <h2>だから、<br><span class="orange">雑魚になろう。</span></h2>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">CORE CONCEPT</div>
+      <h2>責任ゼロで、<br>戦場に参加する。</h2>
+    </div>
+    <p class="lead">プレイヤー側は少人数。敵側は多数。敵はいつでも参加でき、いつでも離脱できる。ゼビウスのトーロイドのような“すぐ倒される雑魚”として、15秒だけ戦って散る。それだけで、この戦場の一部になる。</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">A DAY IN THE WAR</div>
+    <h2>朝、5分だけ。<br>雑魚になる。</h2>
+    <div class="scenario">
+      <p class="lead">コーヒーを飲みながら戦況を見る。</p>
+      <p class="text">北部戦線、劣勢。プレイヤー残り1名。ちょっとだけ入る。あなたは超雑魚になった。突撃。撃墜。終わり……と思ったら。</p>
+    </div>
+    <div class="log">
+      &gt; PLAYER DESTROYED<br>
+      &gt; 撃墜者：NAMELESS UNIT #48291<br>
+      &gt; え、俺？<br>
+      &gt; 敵軍、爆笑。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">REINCARNATION LOOP</div>
+    <h2>死ぬたびに、<br>別の役割へ。</h2>
+    <div class="flow">
+      <div class="node">雑魚</div>
+      <div class="node">死亡</div>
+      <div class="node">別の雑魚</div>
+      <div class="node">ボス</div>
+      <div class="node">主人公</div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner two">
+    <div>
+      <div class="kicker">PLAYER SELECTED</div>
+      <h2>雑魚をしていたら、<br>突然、主人公になる。</h2>
+    </div>
+    <div>
+      <p class="lead">プレイヤー希望を出しておく。雑魚として遊ぶ。プレイヤー側が撃墜される。その瞬間、抽選。</p>
+      <div class="log">
+        &gt; PILOT SLOT OPEN<br>
+        &gt; PLAYER SELECTED<br>
+        &gt; あなたは、今から主人公です。<br>
+        &gt; そして死んだら、また雑魚です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">ANONYMOUS RADIO</div>
+      <h2>匿名ボイスは、<br>無線になる。</h2>
+    </div>
+    <div>
+      <p class="lead">誰が喋っているかわからない。だから責められない。だから笑える。VCではなく、混線する宇宙無線として演出する。</p>
+      <div class="log">
+        ......<br>
+        LOW！！ LOW！！<br>
+        右から回れ！！<br>
+        いけ！！ いけ！！<br>
+        ......ザーッ
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">BOSS SYSTEM</div>
+    <h2>100人で、<br>巨大ボスになる。</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>1人が移動</h3>
+        <p>巨大ボスのコアとして全体を動かす。</p>
+      </article>
+      <article class="card">
+        <h3>残りが砲台</h3>
+        <p>レーザー、ミサイル、シールド、雑魚射出を担当。</p>
+      </article>
+      <article class="card">
+        <h3>負けたら全員雑魚</h3>
+        <p>爆散して、また名もなき兵士へ戻る。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">WHY VERTICAL SHOOTER</div>
+      <h2>なぜ、<br>縦シューティングなのか。</h2>
+    </div>
+    <p class="lead">縦シューティングは、画面の奥から世界が流れてくる、最も原始的で強いゲーム形式のひとつ。昔のプレイヤーは、数ドットの敵や背景から、都市、軍勢、戦争を脳内補完していた。</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">BACK TO THE ORIGIN</div>
+    <h2>あの頃、想像で補っていた戦争を、<br>本当に動かす。</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>脳内補完</h3>
+        <p>限られた絵から、プレイヤーは巨大な世界を想像した。</p>
+      </article>
+      <article class="card">
+        <h3>現代技術</h3>
+        <p>3D、オンライン、AI、Godotで、その想像を共有体験にする。</p>
+      </article>
+      <article class="card">
+        <h3>原点回帰</h3>
+        <p>撃つ・避ける・散る。その単純さに、参加型オンラインという意味を与える。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">24/7 WAR SERVER</div>
+      <h2>戦争は、<br>ログアウトしても<br>続いている。</h2>
+    </div>
+    <p class="lead">今日は敵が押している。昨日はプレイヤー側が要塞を落とした。ゲームが“ニュース”になる。5分だけ参加して、また日常へ戻る。オンラインゲームを、生活の隙間に置く。</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">GENESIS AS R&D</div>
+    <h2>GENESISは、<br>贅沢な研究開発だった。</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Godot</h3>
+        <p>実装・書き出し・ゲーム構造を学んだ基盤。</p>
+      </article>
+      <article class="card">
+        <h3>高度システム</h3>
+        <p>HIGH / MID / LOWをゲーム性にする資産。</p>
+      </article>
+      <article class="card">
+        <h3>画作り</h3>
+        <p>ローポリ＋シェーダーによる独自の美しさ。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner two">
+    <div>
+      <div class="kicker">AI NATIVE DEVELOPMENT</div>
+      <h2>AI時代の、<br>少人数ゲーム開発。</h2>
+    </div>
+    <p class="lead">本事業の中核は、MIDIBOYの企画力・音楽性・世界観設計。ChatGPT、Codex、Claude Codeは、仕様整理、実装支援、検証を高速化する開発パートナーとなる。</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">CORE TEAM</div>
+    <h2>基本体制は、<br>ひとり＋AIチーム。</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>MIDIBOY</h3>
+        <p>企画、ゲームデザイン、音楽、世界観、最終判断。</p>
+      </article>
+      <article class="card">
+        <h3>AI Partners</h3>
+        <p>ChatGPT / Codex / Claude Codeによる設計・実装支援。</p>
+      </article>
+      <article class="card">
+        <h3>Godot</h3>
+        <p>軽量で柔軟なゲームエンジン。将来のSteam展開を想定。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">EQUIPMENT INVESTMENT</div>
+    <h2>投資対象は、<br>人件費よりも開発基盤。</h2>
+    <div class="table">
+      <div class="row head">
+        <div>項目</div><div>目的</div><div>優先度</div>
+      </div>
+      <div class="row">
+        <div>Windows開発PC</div><div>Steam実機検証、Windowsビルド、コントローラー・表示確認</div><div>高</div>
+      </div>
+      <div class="row">
+        <div>GitHub / バックアップ</div><div>AI共同開発・バージョン管理・事業資産保全</div><div>最優先</div>
+      </div>
+      <div class="row">
+        <div>NAS / 外部SSD</div><div>ソース、アセット、ビルド、映像素材の保管</div><div>高</div>
+      </div>
+      <div class="row">
+        <div>AI利用料</div><div>設計、実装、検証、企画書制作の継続支援</div><div>高</div>
+      </div>
+      <div class="row">
+        <div>Steam Direct等</div><div>販売準備、ストア公開、実機配布テスト</div><div>中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">ROADMAP</div>
+    <h2>小さく証明し、<br>大きく育てる。</h2>
+    <div class="timeline">
+      <div class="step">
+        <h3>Phase 0</h3>
+        <p>GENESIS Engine整理。高度・操作感・画作りを共通資産化。</p>
+      </div>
+      <div class="step">
+        <h3>Phase 1</h3>
+        <p>2 vs 20プロトタイプ。雑魚プレイ単体の面白さを検証。</p>
+      </div>
+      <div class="step">
+        <h3>Phase 2</h3>
+        <p>Steam Early Access。小規模コミュニティで改善。</p>
+      </div>
+      <div class="step">
+        <h3>Phase 3</h3>
+        <p>24時間戦争、匿名無線、ボス合体、地形生成へ拡張。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">DEVELOPMENT PERIOD</div>
+    <h2>開発期間の見立て。</h2>
+    <div class="table">
+      <div class="row head">
+        <div>フェーズ</div><div>期間目安</div><div>到達目標</div>
+      </div>
+      <div class="row">
+        <div>コンセプト検証</div><div>3〜4か月</div><div>少人数オンラインで“笑える”瞬間を作る</div>
+      </div>
+      <div class="row">
+        <div>プレイアブルα</div><div>6〜9か月</div><div>2 vs 20、高度、簡易無線、雑魚転生</div>
+      </div>
+      <div class="row">
+        <div>Early Access</div><div>1〜1.5年</div><div>Steam公開、継続アップデート、反応検証</div>
+      </div>
+      <div class="row">
+        <div>正式版候補</div><div>2〜3年</div><div>24時間戦況、ボス合体、地形生成、運営体制</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">BUDGET VIEW</div>
+    <h2>予算は、段階的に使う。</h2>
+    <div class="finance">
+      <div class="metric">
+        <strong>50〜150万</strong>
+        <span>初期基盤：Windows検証機、SSD/NAS、AI利用料、GitHub、Steam準備</span>
+      </div>
+      <div class="metric">
+        <strong>10〜30万/年</strong>
+        <span>試作段階のサーバー・通信・テスト運用レンジ</span>
+      </div>
+      <div class="metric">
+        <strong>5〜15万/月</strong>
+        <span>Early Access以降の小規模サーバー運営費目安</span>
+      </div>
+    </div>
+    <p class="small" style="margin-top:28px">※上記は現時点の概算。実際の費用は同時接続数、ボイス実装方式、サーバー構成、広告規模により変動する。</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">REVENUE HYPOTHESIS</div>
+    <h2>収益は、販売本数より<br>“継続して戻る理由”で作る。</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Steam販売</h3>
+        <p>300〜800円帯で心理的ハードルを下げる。</p>
+      </article>
+      <article class="card">
+        <h3>Early Access</h3>
+        <p>小さく公開し、反応を見ながら育てる。</p>
+      </article>
+      <article class="card">
+        <h3>IP展開</h3>
+        <p>サウンドトラック、続編、コンソール展開を将来的に検討。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner">
+    <div class="kicker">RISK MANAGEMENT</div>
+    <h2>一番のリスクは、<br>100人集まらないことではない。</h2>
+    <p class="lead" style="margin-top:30px">本当のリスクは、雑魚プレイだけで楽しくないこと。だから最初から大規模化しない。20人でも、10人でも、笑えるか。そこを最初に検証する。</p>
+    <div class="cards">
+      <article class="card">
+        <h3>人数リスク</h3>
+        <p>2 vs 20から検証。少人数でも成立する設計にする。</p>
+      </article>
+      <article class="card">
+        <h3>技術リスク</h3>
+        <p>同期、ボイス、地形生成を段階実装する。</p>
+      </article>
+      <article class="card">
+        <h3>運営リスク</h3>
+        <p>匿名性と安全性のバランスを設計段階から検討する。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="kicker">INVESTMENT HYPOTHESIS</div>
+    <h2>成功条件は、<br>5つに絞る。</h2>
+    <div class="partner-list">
+      <div class="partner"><span class="dot"></span><span>雑魚プレイだけで楽しい</span></div>
+      <div class="partner"><span class="dot"></span><span>5分でも満足できる</span></div>
+      <div class="partner"><span class="dot"></span><span>匿名無線が空気を作る</span></div>
+      <div class="partner"><span class="dot"></span><span>プレイヤー抽選が夢になる</span></div>
+      <div class="partner"><span class="dot"></span><span>24時間戦争が戻る理由になる</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="inner two">
+    <div>
+      <div class="kicker">CORPORATE POSITIONING</div>
+      <h2>定款に、<br>ゲーム開発と<br>オンライン運営を加える意味。</h2>
+    </div>
+    <p class="lead">これは単発の趣味開発ではなく、まちのおとの表現領域をゲームへ広げる新規事業である。音楽・映像・インタラクションを統合した、次世代の自社IP開発を目指す。</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <h2>オンラインゲームは、<br>もっと優しくなれる。</h2>
+  </div>
+</section>
+
+<section class="cta light">
+  <div class="inner">
+    <h2>シューティングゲームは、<br>まだ進化できる。</h2>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <div class="kicker">MIDIBOY GAMES / PROJECT 001</div>
+    <h1>雑魚に<br>なろう。</h1>
+    <p class="lead" style="margin-top:30px">主人公じゃなくても、世界は動かせる。</p>
+  </div>
+</section>
+
+<footer class="footer">ZAKO NI NAROU. / MIDIBOY GAMES NEW BUSINESS PLAN v1.0 draft</footer>
+</main>
+
+<script>
+const hero = document.querySelector('.hero');
+const pts = [
+[12,18],[18,28],[22,47],[15,63],[27,74],[34,22],[39,36],[31,54],[42,68],[48,18],
+[54,31],[60,42],[66,22],[72,34],[81,20],[84,52],[75,66],[63,72],[52,81],[38,82],
+[24,35],[29,61],[45,47],[56,56],[68,51],[78,42],[88,72],[11,82],[92,28],[8,47],
+[33,13],[69,82],[58,12],[18,72],[81,83],[41,25],[73,18],[87,61],[22,18],[15,39],
+[47,13],[51,24],[61,63],[70,74],[82,37],[90,48],[6,69],[28,88],[44,78],[58,88]
+];
+pts.forEach((p,i)=>{
+  const s=document.createElement('span');
+  s.className='swarm-dot';
+  s.style.left=p[0]+'%';
+  s.style.top=p[1]+'%';
+  s.style.transform=`scale(${.65+(i%5)*.18})`;
+  hero.appendChild(s);
+});
+</script>
+</body>
+</html>
