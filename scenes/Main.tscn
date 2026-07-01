@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://main"]
+
+[ext_resource type="Script" uid="uid://cceqqbx3q8a0t" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dw5sap1n3k7m" path="res://scenes/units/Unit1.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://background" path="res://scenes/Background.tscn" id="3"]
+[ext_resource type="Script" uid="uid://ko0les3tempd" path="res://scripts/AltGauge.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://unit2" path="res://scenes/units/Unit2.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://unit3" path="res://scenes/units/Unit3.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://unit4" path="res://scenes/units/Unit4.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://unit5" path="res://scenes/units/Unit5.tscn" id="8"]
+[ext_resource type="Script" uid="uid://t76dsgrmqy1u" path="res://scripts/FormationManager.gd" id="9"]
+[ext_resource type="Script" path="res://scripts/EnemySpawner.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/units/Enemy.tscn" id="11"]
+[ext_resource type="Script" uid="uid://startargets" path="res://scripts/StarTargets.gd" id="12"]
+
+[node name="Main" type="Node3D" unique_id=7135478]
+script = ExtResource("1")
+
+[node name="Background" parent="." unique_id=31835689 instance=ExtResource("3")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1033386212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2020362823]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Unit1" parent="." unique_id=1300986910 instance=ExtResource("2")]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
+
+[node name="Unit2" parent="." unique_id=1253681903 instance=ExtResource("5")]
+visible = false
+
+[node name="Unit3" parent="." unique_id=462312734 instance=ExtResource("6")]
+visible = false
+
+[node name="Unit4" parent="." unique_id=1852664388 instance=ExtResource("7")]
+visible = false
+
+[node name="Unit5" parent="." unique_id=1181757035 instance=ExtResource("8")]
+visible = false
+
+[node name="FormationManager" type="Node3D" parent="." unique_id=399540666]
+script = ExtResource("9")
+
+[node name="EnemySpawner" type="Node3D" parent="." unique_id=1913460068]
+script = ExtResource("10")
+enemy_scene = ExtResource("11")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1046925032]
+
+[node name="AltGauge" type="Control" parent="HUD" unique_id=467292222]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4")
+
+[node name="StarTargets" type="Control" parent="HUD" unique_id=1139586338]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("12")

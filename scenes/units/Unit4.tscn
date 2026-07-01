@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://unit4"]
+
+[ext_resource type="Script" uid="uid://unit4script" path="res://scripts/units/Unit4.gd" id="1"]
+
+[sub_resource type="BoxMesh" id="Mesh_cannon"]
+size = Vector3(0.03, 0.22, 0.07)
+[sub_resource type="BoxMesh" id="Mesh_muzzle_block"]
+size = Vector3(0.045, 0.035, 0.078)
+[sub_resource type="BoxMesh" id="Mesh_muzzle_glow"]
+size = Vector3(0.02, 0.02, 0.045)
+[sub_resource type="BoxMesh" id="Mesh_cannon_band"]
+size = Vector3(0.036, 0.02, 0.074)
+[sub_resource type="BoxMesh" id="Mesh_shoulder"]
+size = Vector3(0.16, 0.08, 0.118)
+[sub_resource type="BoxMesh" id="Mesh_fuse_top"]
+size = Vector3(0.2, 0.08, 0.12)
+[sub_resource type="BoxMesh" id="Mesh_fuse_mid"]
+size = Vector3(0.16, 0.12, 0.122)
+[sub_resource type="BoxMesh" id="Mesh_fuse_low"]
+size = Vector3(0.2, 0.04, 0.114)
+[sub_resource type="BoxMesh" id="Mesh_spine_plate"]
+size = Vector3(0.05, 0.2, 0.126)
+[sub_resource type="BoxMesh" id="Mesh_intake"]
+size = Vector3(0.012, 0.09, 0.09)
+[sub_resource type="BoxMesh" id="Mesh_arm_housing"]
+size = Vector3(0.08, 0.09, 0.1)
+[sub_resource type="BoxMesh" id="Mesh_bridge_main"]
+size = Vector3(0.14, 0.06, 0.104)
+[sub_resource type="BoxMesh" id="Mesh_bridge_win"]
+size = Vector3(0.1, 0.06, 0.08)
+[sub_resource type="BoxMesh" id="Mesh_glass"]
+size = Vector3(0.08, 0.03, 0.084)
+[sub_resource type="BoxMesh" id="Mesh_fairing"]
+size = Vector3(0.03, 0.05, 0.06)
+[sub_resource type="BoxMesh" id="Mesh_crew_canopy"]
+size = Vector3(0.05, 0.09, 0.025)
+[sub_resource type="BoxMesh" id="Mesh_nav_lamp"]
+size = Vector3(0.02, 0.03, 0.02)
+[sub_resource type="BoxMesh" id="Mesh_exhaust"]
+size = Vector3(0.045, 0.028, 0.062)
+
+[sub_resource type="StandardMaterial3D" id="Mat_cannon"]
+albedo_color = Color(0.400, 0.933, 0.400, 1)
+metallic = 0.85
+roughness = 0.28
+[sub_resource type="StandardMaterial3D" id="Mat_muzzle_block"]
+albedo_color = Color(0.3, 0.55, 0.35, 1)
+metallic = 0.9
+roughness = 0.25
+[sub_resource type="StandardMaterial3D" id="Mat_muzzle_glow"]
+albedo_color = Color(0.5, 1, 0.4, 1)
+emission_enabled = true
+emission = Color(0.5, 1, 0.4, 1)
+emission_energy_multiplier = 2.2
+[sub_resource type="StandardMaterial3D" id="Mat_shoulder"]
+albedo_color = Color(0.267, 0.867, 0.267, 1)
+metallic = 0.6
+roughness = 0.32
+[sub_resource type="StandardMaterial3D" id="Mat_fuse_top"]
+albedo_color = Color(0.267, 0.769, 0.267, 1)
+metallic = 0.5
+roughness = 0.38
+[sub_resource type="StandardMaterial3D" id="Mat_fuse_mid"]
+albedo_color = Color(0.133, 0.667, 0.133, 1)
+metallic = 0.5
+roughness = 0.4
+[sub_resource type="StandardMaterial3D" id="Mat_steel"]
+albedo_color = Color(0.55, 0.7, 0.6, 1)
+metallic = 0.85
+roughness = 0.28
+[sub_resource type="StandardMaterial3D" id="Mat_dark_mech"]
+albedo_color = Color(0.36, 0.5, 0.42, 1)
+metallic = 0.9
+roughness = 0.25
+[sub_resource type="StandardMaterial3D" id="Mat_arm"]
+albedo_color = Color(0.224, 0.765, 0.224, 1)
+metallic = 0.85
+roughness = 0.28
+[sub_resource type="StandardMaterial3D" id="Mat_bridge"]
+albedo_color = Color(0.341, 0.847, 0.341, 1)
+metallic = 0.55
+roughness = 0.35
+[sub_resource type="StandardMaterial3D" id="Mat_win"]
+albedo_color = Color(0.122, 0.498, 0.498, 1)
+metallic = 0.4
+roughness = 0.2
+[sub_resource type="StandardMaterial3D" id="Mat_glass"]
+albedo_color = Color(0.549, 0.941, 1.0, 1)
+metallic = 0.0
+roughness = 0.05
+emission_enabled = true
+emission = Color(0.4, 0.9, 1, 1)
+emission_energy_multiplier = 1.2
+[sub_resource type="StandardMaterial3D" id="Mat_fairing"]
+albedo_color = Color(0.196, 0.698, 0.196, 1)
+metallic = 0.5
+roughness = 0.38
+[sub_resource type="StandardMaterial3D" id="Mat_lamp"]
+albedo_color = Color(1, 0.2, 0.1, 1)
+emission_enabled = true
+emission = Color(1, 0.25, 0.1, 1)
+emission_energy_multiplier = 2.5
+[sub_resource type="StandardMaterial3D" id="Mat_exhaust"]
+albedo_color = Color(0.5, 1, 0.7, 1)
+emission_enabled = true
+emission = Color(0.45, 1, 0.65, 1)
+emission_energy_multiplier = 2.0
+
+[node name="Unit4" type="Node3D"]
+script = ExtResource("1")
+
+[node name="left_cannon_group" type="Node3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.025, 0.27, 0)
+
+[node name="left_cannon" type="MeshInstance3D" parent="left_cannon_group"]
+mesh = SubResource("Mesh_cannon")
+surface_material_override/0 = SubResource("Mat_cannon")
+
+[node name="left_cannon_band" type="MeshInstance3D" parent="left_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.04, 0)
+mesh = SubResource("Mesh_cannon_band")
+surface_material_override/0 = SubResource("Mat_dark_mech")
+
+[node name="left_muzzle_block" type="MeshInstance3D" parent="left_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.095, 0)
+mesh = SubResource("Mesh_muzzle_block")
+surface_material_override/0 = SubResource("Mat_muzzle_block")
+
+[node name="left_muzzle_glow" type="MeshInstance3D" parent="left_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.122, 0)
+mesh = SubResource("Mesh_muzzle_glow")
+surface_material_override/0 = SubResource("Mat_muzzle_glow")
+
+[node name="right_cannon_group" type="Node3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.025, 0.27, 0)
+
+[node name="right_cannon" type="MeshInstance3D" parent="right_cannon_group"]
+mesh = SubResource("Mesh_cannon")
+surface_material_override/0 = SubResource("Mat_cannon")
+
+[node name="right_cannon_band" type="MeshInstance3D" parent="right_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.04, 0)
+mesh = SubResource("Mesh_cannon_band")
+surface_material_override/0 = SubResource("Mat_dark_mech")
+
+[node name="right_muzzle_block" type="MeshInstance3D" parent="right_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.095, 0)
+mesh = SubResource("Mesh_muzzle_block")
+surface_material_override/0 = SubResource("Mat_muzzle_block")
+
+[node name="right_muzzle_glow" type="MeshInstance3D" parent="right_cannon_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.122, 0)
+mesh = SubResource("Mesh_muzzle_glow")
+surface_material_override/0 = SubResource("Mat_muzzle_glow")
+
+[node name="shoulder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.16, 0)
+mesh = SubResource("Mesh_shoulder")
+surface_material_override/0 = SubResource("Mat_shoulder")
+
+[node name="left_nav_lamp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.075, 0.16, 0.055)
+mesh = SubResource("Mesh_nav_lamp")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="right_nav_lamp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.075, 0.16, 0.055)
+mesh = SubResource("Mesh_nav_lamp")
+surface_material_override/0 = SubResource("Mat_lamp")
+
+[node name="fuse_top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.09, 0)
+mesh = SubResource("Mesh_fuse_top")
+surface_material_override/0 = SubResource("Mat_fuse_top")
+
+[node name="crew_canopy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.1, 0.065)
+mesh = SubResource("Mesh_crew_canopy")
+surface_material_override/0 = SubResource("Mat_glass")
+
+[node name="spine_plate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.02, 0)
+mesh = SubResource("Mesh_spine_plate")
+surface_material_override/0 = SubResource("Mat_steel")
+
+[node name="fuse_mid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.01, 0)
+mesh = SubResource("Mesh_fuse_mid")
+surface_material_override/0 = SubResource("Mat_fuse_mid")
+
+[node name="left_intake" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.083, -0.01, 0)
+mesh = SubResource("Mesh_intake")
+surface_material_override/0 = SubResource("Mat_dark_mech")
+
+[node name="right_intake" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.083, -0.01, 0)
+mesh = SubResource("Mesh_intake")
+surface_material_override/0 = SubResource("Mat_dark_mech")
+
+[node name="fuse_low" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.07, 0)
+mesh = SubResource("Mesh_fuse_low")
+surface_material_override/0 = SubResource("Mat_fuse_mid")
+
+[node name="left_exhaust" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.05, -0.1, 0)
+mesh = SubResource("Mesh_exhaust")
+surface_material_override/0 = SubResource("Mat_exhaust")
+
+[node name="right_exhaust" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.05, -0.1, 0)
+mesh = SubResource("Mesh_exhaust")
+surface_material_override/0 = SubResource("Mat_exhaust")
+
+[node name="left_arm_housing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.09, 0.115, 0)
+mesh = SubResource("Mesh_arm_housing")
+surface_material_override/0 = SubResource("Mat_arm")
+
+[node name="right_arm_housing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.09, 0.115, 0)
+mesh = SubResource("Mesh_arm_housing")
+surface_material_override/0 = SubResource("Mat_arm")
+
+[node name="bridge_group" type="Node3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.06, 0)
+
+[node name="bridge_main" type="MeshInstance3D" parent="bridge_group"]
+mesh = SubResource("Mesh_bridge_main")
+surface_material_override/0 = SubResource("Mat_bridge")
+
+[node name="bridge_window" type="MeshInstance3D" parent="bridge_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.03, 0)
+mesh = SubResource("Mesh_bridge_win")
+surface_material_override/0 = SubResource("Mat_win")
+
+[node name="bridge_glass" type="MeshInstance3D" parent="bridge_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.035, 0)
+mesh = SubResource("Mesh_glass")
+surface_material_override/0 = SubResource("Mat_glass")
+
+[node name="left_fairing" type="MeshInstance3D" parent="bridge_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.085, -0.005, 0)
+mesh = SubResource("Mesh_fairing")
+surface_material_override/0 = SubResource("Mat_fairing")
+
+[node name="right_fairing" type="MeshInstance3D" parent="bridge_group"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.085, -0.005, 0)
+mesh = SubResource("Mesh_fairing")
+surface_material_override/0 = SubResource("Mat_fairing")

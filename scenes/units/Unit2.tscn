@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://unit2"]
+
+[ext_resource type="Script" uid="uid://unit2script" path="res://scripts/units/Unit2.gd" id="1"]
+
+[sub_resource type="BoxMesh" id="Mesh_cc"]
+size = Vector3(0.17, 0.07, 0.10)
+[sub_resource type="BoxMesh" id="Mesh_bs"]
+size = Vector3(0.14, 0.18, 0.12)
+[sub_resource type="BoxMesh" id="Mesh_bc"]
+size = Vector3(0.14, 0.10, 0.10)
+[sub_resource type="BoxMesh" id="Mesh_wing"]
+size = Vector3(0.12, 0.14, 0.08)
+[sub_resource type="BoxMesh" id="Mesh_rfill"]
+size = Vector3(0.10, 0.08, 0.076)
+[sub_resource type="BoxMesh" id="Mesh_pod"]
+size = Vector3(0.06, 0.18, 0.084)
+[sub_resource type="BoxMesh" id="Mesh_tip"]
+size = Vector3(0.05, 0.06, 0.06)
+[sub_resource type="BoxMesh" id="Mesh_eng"]
+size = Vector3(0.08, 0.10, 0.096)
+[sub_resource type="BoxMesh" id="Mesh_canopy"]
+size = Vector3(0.06, 0.045, 0.06)
+[sub_resource type="BoxMesh" id="Mesh_flame"]
+size = Vector3(0.04, 0.04, 0.05)
+[sub_resource type="BoxMesh" id="Mesh_pod_glow"]
+size = Vector3(0.025, 0.025, 0.09)
+[sub_resource type="BoxMesh" id="Mesh_pylon"]
+size = Vector3(0.03, 0.05, 0.09)
+[sub_resource type="BoxMesh" id="Mesh_eng_r"]
+size = Vector3(0.08, 0.10, 0.092)
+[sub_resource type="BoxMesh" id="Mesh_keel"]
+size = Vector3(0.06, 0.22, 0.13)
+[sub_resource type="BoxMesh" id="Mesh_keel_glow"]
+size = Vector3(0.034, 0.06, 0.134)
+[sub_resource type="BoxMesh" id="Mesh_probe"]
+size = Vector3(0.014, 0.1, 0.02)
+[sub_resource type="BoxMesh" id="Mesh_skirt"]
+size = Vector3(0.02, 0.14, 0.125)
+[sub_resource type="BoxMesh" id="Mesh_bumper"]
+size = Vector3(0.1, 0.03, 0.106)
+[sub_resource type="BoxMesh" id="Mesh_rear_glow"]
+size = Vector3(0.05, 0.018, 0.108)
+
+[sub_resource type="StandardMaterial3D" id="Mat_cc"]
+albedo_color = Color(0.467, 0.200, 0.733, 1)
+metallic = 0.6
+roughness = 0.32
+[sub_resource type="StandardMaterial3D" id="Mat_bs"]
+albedo_color = Color(0.400, 0.133, 0.667, 1)
+metallic = 0.5
+roughness = 0.4
+[sub_resource type="StandardMaterial3D" id="Mat_bc"]
+albedo_color = Color(0.333, 0.067, 0.667, 1)
+metallic = 0.5
+roughness = 0.4
+[sub_resource type="StandardMaterial3D" id="Mat_wing"]
+albedo_color = Color(0.267, 0.067, 0.667, 1)
+metallic = 0.55
+roughness = 0.35
+[sub_resource type="StandardMaterial3D" id="Mat_rfill"]
+albedo_color = Color(0.302, 0.102, 0.667, 1)
+metallic = 0.5
+roughness = 0.4
+[sub_resource type="StandardMaterial3D" id="Mat_pod"]
+albedo_color = Color(0.8, 0.13, 0.1, 1)
+metallic = 0.5
+roughness = 0.35
+[sub_resource type="StandardMaterial3D" id="Mat_tip"]
+albedo_color = Color(1.000, 0.133, 0.067, 1)
+emission_enabled = true
+emission = Color(1, 0.18, 0.05, 1)
+emission_energy_multiplier = 2.5
+[sub_resource type="StandardMaterial3D" id="Mat_eng"]
+albedo_color = Color(0.600, 0.267, 0.800, 1)
+metallic = 0.85
+roughness = 0.28
+[sub_resource type="StandardMaterial3D" id="Mat_canopy"]
+albedo_color = Color(0.8, 0.6, 1, 1)
+metallic = 0.0
+roughness = 0.05
+emission_enabled = true
+emission = Color(0.7, 0.45, 1, 1)
+emission_energy_multiplier = 1.2
+[sub_resource type="StandardMaterial3D" id="Mat_flame"]
+albedo_color = Color(1, 0.6, 0.2, 1)
+emission_enabled = true
+emission = Color(1, 0.6, 0.2, 1)
+emission_energy_multiplier = 2.5
+[sub_resource type="StandardMaterial3D" id="Mat_pod_glow"]
+albedo_color = Color(1, 0.4, 0.3, 1)
+emission_enabled = true
+emission = Color(1, 0.4, 0.25, 1)
+emission_energy_multiplier = 2.0
+[sub_resource type="StandardMaterial3D" id="Mat_mech"]
+albedo_color = Color(0.48, 0.38, 0.62, 1)
+metallic = 0.9
+roughness = 0.25
+[sub_resource type="StandardMaterial3D" id="Mat_keel"]
+albedo_color = Color(0.55, 0.3, 0.8, 1)
+metallic = 0.5
+roughness = 0.35
+[sub_resource type="StandardMaterial3D" id="Mat_skirt"]
+albedo_color = Color(0.62, 0.42, 0.85, 1)
+metallic = 0.4
+roughness = 0.4
+
+[node name="Unit2" type="Node3D"]
+script = ExtResource("1")
+
+[node name="body" type="Node3D" parent="."]
+
+[node name="center_conn" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.045, 0)
+mesh = SubResource("Mesh_cc")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="canopy" type="MeshInstance3D" parent="body/center_conn"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0, 0.04)
+mesh = SubResource("Mesh_canopy")
+surface_material_override/0 = SubResource("Mat_canopy")
+
+[node name="nose_probe" type="MeshInstance3D" parent="body/center_conn"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.075, 0.01)
+mesh = SubResource("Mesh_probe")
+surface_material_override/0 = SubResource("Mat_mech")
+
+[node name="center_keel" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.05, 0)
+mesh = SubResource("Mesh_keel")
+surface_material_override/0 = SubResource("Mat_keel")
+
+[node name="keel_glow" type="MeshInstance3D" parent="body/center_keel"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.04, 0)
+mesh = SubResource("Mesh_keel_glow")
+surface_material_override/0 = SubResource("Mat_tip")
+
+[node name="left_body" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.15, -0.05, 0)
+mesh = SubResource("Mesh_bs")
+surface_material_override/0 = SubResource("Mat_bs")
+
+[node name="left_skirt" type="MeshInstance3D" parent="body/left_body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.075, -0.01, 0)
+mesh = SubResource("Mesh_skirt")
+surface_material_override/0 = SubResource("Mat_skirt")
+
+[node name="right_body" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.15, -0.05, 0)
+mesh = SubResource("Mesh_bs")
+surface_material_override/0 = SubResource("Mat_bs")
+
+[node name="right_skirt" type="MeshInstance3D" parent="body/right_body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.075, -0.01, 0)
+mesh = SubResource("Mesh_skirt")
+surface_material_override/0 = SubResource("Mat_skirt")
+
+[node name="bottom_center" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.18, 0)
+mesh = SubResource("Mesh_bc")
+surface_material_override/0 = SubResource("Mat_bc")
+
+[node name="rear_bumper" type="MeshInstance3D" parent="body/bottom_center"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.05, 0)
+mesh = SubResource("Mesh_bumper")
+surface_material_override/0 = SubResource("Mat_mech")
+
+[node name="rear_glow" type="MeshInstance3D" parent="body/bottom_center"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.062, 0)
+mesh = SubResource("Mesh_rear_glow")
+surface_material_override/0 = SubResource("Mat_flame")
+
+[node name="left_wing_pivot" type="Node3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.22, -0.06, 0)
+
+[node name="left_wing" type="MeshInstance3D" parent="left_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.06, 0, 0)
+mesh = SubResource("Mesh_wing")
+surface_material_override/0 = SubResource("Mat_wing")
+
+[node name="left_pylon" type="MeshInstance3D" parent="left_wing_pivot/left_wing"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.02, -0.025, 0)
+mesh = SubResource("Mesh_pylon")
+surface_material_override/0 = SubResource("Mat_mech")
+
+[node name="left_rear_fill" type="MeshInstance3D" parent="left_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.05, -0.08, 0)
+mesh = SubResource("Mesh_rfill")
+surface_material_override/0 = SubResource("Mat_rfill")
+
+[node name="left_pod" type="MeshInstance3D" parent="left_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.12, 0, 0)
+mesh = SubResource("Mesh_pod")
+surface_material_override/0 = SubResource("Mat_pod")
+
+[node name="left_pod_glow" type="MeshInstance3D" parent="left_wing_pivot/left_pod"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.06, 0)
+mesh = SubResource("Mesh_pod_glow")
+surface_material_override/0 = SubResource("Mat_pod_glow")
+
+[node name="left_tip" type="MeshInstance3D" parent="left_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.135, 0.08, 0)
+mesh = SubResource("Mesh_tip")
+surface_material_override/0 = SubResource("Mat_tip")
+
+[node name="right_wing_pivot" type="Node3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.22, -0.06, 0)
+
+[node name="right_wing" type="MeshInstance3D" parent="right_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.06, 0, 0)
+mesh = SubResource("Mesh_wing")
+surface_material_override/0 = SubResource("Mat_wing")
+
+[node name="right_pylon" type="MeshInstance3D" parent="right_wing_pivot/right_wing"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.02, -0.025, 0)
+mesh = SubResource("Mesh_pylon")
+surface_material_override/0 = SubResource("Mat_mech")
+
+[node name="right_rear_fill" type="MeshInstance3D" parent="right_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.05, -0.08, 0)
+mesh = SubResource("Mesh_rfill")
+surface_material_override/0 = SubResource("Mat_rfill")
+
+[node name="right_pod" type="MeshInstance3D" parent="right_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.12, 0, 0)
+mesh = SubResource("Mesh_pod")
+surface_material_override/0 = SubResource("Mat_pod")
+
+[node name="right_pod_glow" type="MeshInstance3D" parent="right_wing_pivot/right_pod"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, 0.06, 0)
+mesh = SubResource("Mesh_pod_glow")
+surface_material_override/0 = SubResource("Mat_pod_glow")
+
+[node name="right_tip" type="MeshInstance3D" parent="right_wing_pivot"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.135, 0.08, 0)
+mesh = SubResource("Mesh_tip")
+surface_material_override/0 = SubResource("Mat_tip")
+
+[node name="left_engine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, -0.08, -0.19, 0)
+mesh = SubResource("Mesh_eng")
+surface_material_override/0 = SubResource("Mat_eng")
+
+[node name="left_engine_flame" type="MeshInstance3D" parent="left_engine"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.07, 0)
+mesh = SubResource("Mesh_flame")
+surface_material_override/0 = SubResource("Mat_flame")
+
+[node name="right_engine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0.08, -0.19, 0)
+mesh = SubResource("Mesh_eng_r")
+surface_material_override/0 = SubResource("Mat_eng")
+
+[node name="right_engine_flame" type="MeshInstance3D" parent="right_engine"]
+transform = Transform3D(1,0,0, 0,1,0, 0,0,1, 0, -0.07, 0)
+mesh = SubResource("Mesh_flame")
+surface_material_override/0 = SubResource("Mat_flame")

@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://djioqyxhpcpkm"]
+
+[ext_resource type="Script" uid="uid://barrgcsogp5s1" path="res://scripts/units/Unit1.gd" id="1_unit1"]
+
+[sub_resource type="BoxMesh" id="Box_nt"]
+size = Vector3(0.02, 0.04, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="Mat_nt"]
+albedo_color = Color(0.666667, 0.933333, 1, 1)
+
+[sub_resource type="BoxMesh" id="Box_nm"]
+size = Vector3(0.04, 0.05, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="Mat_nm"]
+albedo_color = Color(0.333333, 0.8, 1, 1)
+
+[sub_resource type="BoxMesh" id="Box_nl"]
+size = Vector3(0.06, 0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_nl"]
+albedo_color = Color(0.133333, 0.533333, 0.866667, 1)
+
+[sub_resource type="BoxMesh" id="Box_bm"]
+size = Vector3(0.08, 0.28, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="Mat_cc"]
+albedo_color = Color(0.101961, 0.4, 0.8, 1)
+
+[sub_resource type="BoxMesh" id="Box_bh"]
+size = Vector3(0.06, 0.24, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="Mat_hh"]
+albedo_color = Color(0.133333, 0.466667, 0.866667, 1)
+
+[sub_resource type="BoxMesh" id="Box_ck"]
+size = Vector3(0.04, 0.06, 0.18)
+
+[sub_resource type="StandardMaterial3D" id="Mat_ee"]
+albedo_color = Color(0.533333, 0.933333, 1, 1)
+grow_amount = 0.176
+
+[sub_resource type="BoxMesh" id="Box_tf"]
+size = Vector3(0.02, 0.08, 0.12)
+
+[sub_resource type="BoxMesh" id="Box_bl"]
+size = Vector3(0.08, 0.01, 0.2)
+
+[sub_resource type="BoxMesh" id="Box_arm"]
+size = Vector3(0.02, 0.04, 0.1)
+
+[sub_resource type="BoxMesh" id="Box_wr"]
+size = Vector3(0.08, 0.06, 0.1)
+
+[sub_resource type="BoxMesh" id="Box_wi"]
+size = Vector3(0.12, 0.05, 0.08)
+
+[sub_resource type="BoxMesh" id="Box_wo"]
+size = Vector3(0.16, 0.04, 0.06)
+
+[sub_resource type="StandardMaterial3D" id="Mat_wo"]
+albedo_color = Color(0.066667, 0.333333, 0.733333, 1)
+
+[sub_resource type="BoxMesh" id="Box_en"]
+size = Vector3(0.04, 0.06, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="Mat_en"]
+albedo_color = Color(0.2, 0.266667, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="Box_nz"]
+size = Vector3(0.04, 0.04, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="Mat_nz"]
+albedo_color = Color(0, 0.6, 1, 1)
+
+[sub_resource type="BoxMesh" id="Box_fl"]
+size = Vector3(0.03, 0.03, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_fl"]
+albedo_color = Color(0.266667, 0.866667, 1, 1)
+
+[sub_resource type="BoxMesh" id="Box_ms"]
+size = Vector3(0.02, 0.07, 0.04)
+
+[sub_resource type="StandardMaterial3D" id="Mat_ms"]
+albedo_color = Color(0.266667, 1, 0.8, 1)
+
+[node name="Unit1" type="Node3D" unique_id=1037385610]
+script = ExtResource("1_unit1")
+
+[node name="body" type="Node3D" parent="." unique_id=1774619617]
+
+[node name="nose_tip" type="MeshInstance3D" parent="body" unique_id=1754307346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225, 0)
+mesh = SubResource("Box_nt")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_nt")
+
+[node name="nose_mid" type="MeshInstance3D" parent="body" unique_id=699938380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185, 0)
+mesh = SubResource("Box_nm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_nm")
+
+[node name="nose_lower" type="MeshInstance3D" parent="body" unique_id=2054313109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, 0)
+mesh = SubResource("Box_nl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_nl")
+
+[node name="body_main" type="MeshInstance3D" parent="body" unique_id=1465110452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+mesh = SubResource("Box_bm")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="body_highlight" type="MeshInstance3D" parent="body" unique_id=977790887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+mesh = SubResource("Box_bh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_hh")
+
+[node name="cockpit" type="MeshInstance3D" parent="body" unique_id=1944208213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("Box_ck")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_ee")
+
+[node name="tail_fin" type="MeshInstance3D" parent="body" unique_id=516977433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0)
+mesh = SubResource("Box_tf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="body_line" type="MeshInstance3D" parent="body" unique_id=1483765225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
+mesh = SubResource("Box_bl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("Mat_ee")
+
+[node name="left_arm" type="MeshInstance3D" parent="." unique_id=100002001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.05, 0)
+mesh = SubResource("Box_arm")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="right_arm" type="MeshInstance3D" parent="." unique_id=100002002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.05, 0)
+mesh = SubResource("Box_arm")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="left_wing_pivot" type="Node3D" parent="." unique_id=100001001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0, 0)
+
+[node name="left_wing_root" type="MeshInstance3D" parent="left_wing_pivot" unique_id=1160037184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.03, 0)
+mesh = SubResource("Box_wr")
+surface_material_override/0 = SubResource("Mat_hh")
+
+[node name="left_wing_inner" type="MeshInstance3D" parent="left_wing_pivot" unique_id=329771748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.02, 0)
+mesh = SubResource("Box_wi")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="left_wing_outer" type="MeshInstance3D" parent="left_wing_pivot" unique_id=1441901811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16, 0.01, 0)
+mesh = SubResource("Box_wo")
+surface_material_override/0 = SubResource("Mat_wo")
+
+[node name="right_wing_pivot" type="Node3D" parent="." unique_id=100001002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0, 0)
+
+[node name="right_wing_root" type="MeshInstance3D" parent="right_wing_pivot" unique_id=1492514774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0.03, 0)
+mesh = SubResource("Box_wr")
+surface_material_override/0 = SubResource("Mat_hh")
+
+[node name="right_wing_inner" type="MeshInstance3D" parent="right_wing_pivot" unique_id=1181456516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.02, 0)
+mesh = SubResource("Box_wi")
+surface_material_override/0 = SubResource("Mat_cc")
+
+[node name="right_wing_outer" type="MeshInstance3D" parent="right_wing_pivot" unique_id=683701422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.01, 0)
+mesh = SubResource("Box_wo")
+surface_material_override/0 = SubResource("Mat_wo")
+
+[node name="left_engine_group" type="Node3D" parent="." unique_id=100001003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.08, 0)
+
+[node name="left_engine" type="MeshInstance3D" parent="left_engine_group" unique_id=436382073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("Box_en")
+surface_material_override/0 = SubResource("Mat_en")
+
+[node name="left_nozzle" type="MeshInstance3D" parent="left_engine_group" unique_id=871530435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+mesh = SubResource("Box_nz")
+surface_material_override/0 = SubResource("Mat_nz")
+
+[node name="left_flame" type="MeshInstance3D" parent="left_engine_group" unique_id=2121858450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+mesh = SubResource("Box_fl")
+surface_material_override/0 = SubResource("Mat_fl")
+
+[node name="left_missile" type="MeshInstance3D" parent="left_engine_group" unique_id=1071815733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+mesh = SubResource("Box_ms")
+surface_material_override/0 = SubResource("Mat_ms")
+
+[node name="right_engine_group" type="Node3D" parent="." unique_id=100001004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -0.08, 0)
+
+[node name="right_engine" type="MeshInstance3D" parent="right_engine_group" unique_id=1974501771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("Box_en")
+surface_material_override/0 = SubResource("Mat_en")
+
+[node name="right_nozzle" type="MeshInstance3D" parent="right_engine_group" unique_id=283738566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
+mesh = SubResource("Box_nz")
+surface_material_override/0 = SubResource("Mat_nz")
+
+[node name="right_flame" type="MeshInstance3D" parent="right_engine_group" unique_id=81082203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+mesh = SubResource("Box_fl")
+surface_material_override/0 = SubResource("Mat_fl")
+
+[node name="right_missile" type="MeshInstance3D" parent="right_engine_group" unique_id=2057000851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+mesh = SubResource("Box_ms")
+surface_material_override/0 = SubResource("Mat_ms")

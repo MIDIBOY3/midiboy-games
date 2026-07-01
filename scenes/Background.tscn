@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://background"]
+
+[ext_resource type="Script" uid="uid://xwrsqwhn63gv" path="res://scripts/Background.gd" id="1"]
+[ext_resource type="Shader" uid="uid://705qbpchlgbk" path="res://shaders/space_background.gdshader" id="2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+render_priority = 0
+shader = ExtResource("2")
+shader_parameter/scroll_y = 0.0
+shader_parameter/scroll_x = 0.0
+shader_parameter/time_val = 0.0
+shader_parameter/zoom = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1"]
+size = Vector2(1400, 1000)
+
+[node name="Background" type="Node3D" unique_id=614541541]
+script = ExtResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1049338765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -110)
+material_override = SubResource("ShaderMaterial_1")
+mesh = SubResource("QuadMesh_1")
